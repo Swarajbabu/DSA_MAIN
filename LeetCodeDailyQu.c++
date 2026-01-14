@@ -22,20 +22,3 @@ public:
 
 // Output (for input: points = [[3,2],[-2,2]]):
 //         5
-
-// LeetCode Problem: Majority Element
-int majorityElement(vector<int>& nums) {
-    unordered_map<int,int> mpp;
-    int n = nums.size();
-    for(int i = 0;i<n;i++){
-        mpp[nums[i]]++;     
-    }
-    for(auto it: mpp){
-        if(it.second > (n/2)){
-            return it.first;
-        }
-    }
-    return -1;
-}
-//output (for input: nums = [3,2,3]):
-//         3
