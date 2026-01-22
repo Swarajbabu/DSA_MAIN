@@ -22,3 +22,37 @@ public:
 
 // Output (for input: points = [[3,2],[-2,2]]):
 //         5
+
+
+class Solution {
+public:
+    // find minimum sum pair of adjacent elements and index
+    int minum(vector<int>& nums){
+        int minsum = INT_MAX;
+        int indux = -1;
+        for(int i = 0;i<nums.size()-1;i++){
+            if(nums[i]+nums[i+1] < minsum){
+                indux = i;
+                minsum = nums[i]+nums[i+1];
+            }
+        }
+        return indux;
+    }
+    // main function to find minimum pair removal to make array sorted
+    int minimumPairRemoval(vector<int>& nums) {
+        int cun = 0;
+        while(!is_sorted(begin(nums),end(nums))){
+            int indux = minum(nums);
+            nums[indux] = nums[indux]+nums[indux+1];
+            nums.erase(begin(nums)+indux+1);
+            cun++;
+        }
+        return cun;
+    }
+};
+// [5,2,3,1]
+// 2
+
+// [1,2,2]
+// 0
+
