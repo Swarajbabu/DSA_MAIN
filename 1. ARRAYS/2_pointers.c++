@@ -90,7 +90,7 @@ int main(){
 //         3
 
 
-
+// Segregate 0s and 1s in an array leetcode
 class Solution {
   public:
     void segregate0and1(vector<int> &arr) {
@@ -208,3 +208,30 @@ public:
 // Input: nums = [0,0,1,1,1,1,2,3,3]
 // Output: 7, nums = [0,0,1,1,2,3,3,_,_]
 
+
+// Stacks using array
+class Solution {
+public:
+    int binaryGap(int n) {
+        string B = bitset<32>(n).to_string();
+
+        int last = -1;
+        int ans = 0;
+
+        for(int i = 0; i < B.length(); i++) {
+            if(B[i] == '1') {
+                if(last != -1) {
+                    ans = max(ans, i - last);
+                }
+                last = i;
+            }
+        }
+
+        return ans;
+    }
+};
+// Input: n = 22
+// Output: 2
+// explanation: 22 in binary is "10110". In the binary representation of 22, there are three ones, 
+// and the two consecutive pairs of 1's have distances 2 and 1. The maximum distance is 2. 
+// Hence the answer is 2.

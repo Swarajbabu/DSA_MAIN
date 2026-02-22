@@ -63,7 +63,7 @@ using namespace std;
 int arr[5];
 int topval = -1;
 void push(int val){
-    if(topval==3){
+    if(topval==4){
         cout<<"Stack is full";
         return;
     }
