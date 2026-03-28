@@ -246,7 +246,7 @@ public:
         vector<vector<int>> ans;
         sort(nums.begin(),nums.end());
         for(int i=0;i<n;i++){
-            if(i>0 && nums[i]==nums[i-1]) continue;
+            if(i>0 && nums[i]==nums[i-1]) continue; 
 
             int j=i+1;
             int k=n-1;
@@ -281,3 +281,40 @@ public:
 //explanation: The given array is [-1,0,1,2,-1,-4]. After sorting the array becomes [-4,-1,-1,0,1,2].
 // The triplets that sum up to zero are:
 // [-1,-1,2] and [-1,0,1]. Note that the order of the output and the order of the triplets does not matter.
+
+
+
+// 75. Sort Colors
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int n = nums.size();
+        int low = 0;
+        int mid = 0;
+        int hig = n-1;
+
+        while(mid<=hig){
+            if(nums[mid]==1){
+                mid++;
+            }
+            else if(nums[mid]==0){
+                int temp = nums[mid];
+                nums[mid] = nums[low];
+                nums[low] = temp;
+                mid++;
+                low++;
+            }
+            else{
+                int temp = nums[mid];
+                nums[mid] = nums[hig];
+                nums[hig] = temp;
+
+                hig--;
+            }
+        }
+    }
+};
+
+// Input: nums = [2,0,2,1,1,0]
+// Output: [0,0,1,1,2,2]
+// Explanation: The given array is [2,0,2,1,1,0]. After sorting the array becomes [0,0,1,1,2,2].
