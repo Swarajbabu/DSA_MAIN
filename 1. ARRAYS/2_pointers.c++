@@ -318,3 +318,32 @@ public:
 // Input: nums = [2,0,2,1,1,0]
 // Output: [0,0,1,1,2,2]
 // Explanation: The given array is [2,0,2,1,1,0]. After sorting the array becomes [0,0,1,1,2,2].
+
+
+// 11. Container With Most Water
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        
+        int n = height.size();
+        // if(n < 1) return 0;
+        int l = 0;
+        int r = n-1;
+
+        int mxarea = 0;
+        while(l<r){
+            int len = min(height[l],height[r]);
+            int wid = r-l;
+            int area = len*wid;
+            mxarea = max(mxarea,area);
+
+            if(height[l]>=height[r]) r--;
+            else l++;
+        }
+        return mxarea;
+
+    }
+};
+// Input: height = [1,8,6,2,5,4,8,3,7]
+// Output: 49
+// Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
