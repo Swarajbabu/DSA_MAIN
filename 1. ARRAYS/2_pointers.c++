@@ -347,3 +347,38 @@ public:
 // Input: height = [1,8,6,2,5,4,8,3,7]
 // Output: 49
 // Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
+
+
+// 42. Trapping Rain Water
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int  n = height.size();
+        int left = 0;
+        int right = n-1;
+
+        int leftmax = height[left];
+        int rightmax = height[right];
+
+        int water = 0;
+
+        while(left<right){ 
+            if(leftmax < rightmax){
+                left++;
+                leftmax = max(leftmax,height[left]);
+                water += leftmax - height[left]; 
+            }
+            else{
+                right--;
+                rightmax = max(rightmax,height[right]);
+                water += rightmax - height[right];
+            }
+        }
+
+        return water;
+    }
+};
+
+// Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+// Output: 6
+// Explanation: The above elevation map is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped. Thanks Marcos for contributing this image!
