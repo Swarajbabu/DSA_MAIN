@@ -97,7 +97,7 @@ int main(){
 // Explanation: Sub-array with maximum sum is {10, 23, 3, 1} with sum as 39.
 
 
-// maximum sum of sub array of size k   optimal approach using sliding window technique
+// maximum sum of sub array of size k   optimal approach using sliding window technique   tc: o(n) and sc: o(1)
 class Solution {
   public:
     int maxSubarraySum(vector<int>& arr, int k) {
@@ -122,3 +122,111 @@ class Solution {
 // output: 39 (10+23+3+1)
 
 
+
+// 1004. Max Consecutive Ones III brute force approach            TC: o(n^2) and SC: o(1)
+class Solution {
+public:
+    int longestOnes(vector<int>& nums, int k) {
+        int n = nums.size();
+        int max_len = 0;
+        for(int i=0;i<n;i++){
+            int cnt = 0;
+            for(int j = i;j<n;j++){
+                if(nums[j]==0){
+                    cnt++;
+                }
+                if(cnt>k){
+                    break;
+                }
+                max_len = max(max_len,j-i+1);
+            }
+        }
+        return max_len;
+    }
+};
+//                        OR                                  //
+// 1004. Max Consecutive Ones III optimal approach using sliding window technique    tc: o(n) and sc: o(1)
+class Solution {
+public:
+    int longestOnes(vector<int>& nums, int k) {
+        int n = nums.size();
+        
+        int l = 0;
+        int cnt = 0;
+        for(int r=0;r<n;r++){
+            if(nums[r]==0){
+                cnt++;
+            }
+            if(cnt>k){
+                if(nums[l]==0){
+                    cnt--;
+                }
+                l++;
+            }
+        }
+        return n-l;
+    }
+};
+// Input: nums = [1,1,1,0,0,0,1,1,1,1], k = 2
+// Output: 6
+
+
+
+// 713. Subarray Product Less Than K            brute force approach      TC: o(n^2) and SC: o(1)
+class Solution {
+public:
+    int numSubarrayProductLessThanK(vector<int>& nums, int k) {
+        
+        int n = nums.size();
+        if (k < 1) {
+            return 0;
+        }
+        int mul = 1;
+        int cnt = 0;
+        for (int i = 0; i < n; i++) {
+            mul = 1;
+            for (int j = i; j < n; j++) {
+                mul = mul * nums[j];
+                if (mul < k) {
+                    cnt++;
+                } else {
+                    break;
+                }
+            }
+        }
+        return cnt;
+    }
+};
+// Input: nums = [10,5,2,6], k = 100
+// Output: 8
+// Explanation: The 8 subarrays that have product less than 100 are:
+// [10], [5], [2], [6], [10,5], [5,2], [2,6], [5,2,6]
+
+//                                or                                 //
+
+// 713. Subarray Product Less Than K            optimal approach using sliding window technique      TC: o(n) and SC: o(1)
+class Solution {
+public:
+    int numSubarrayProductLessThanK(vector<int>& nums, int k) {
+        if(k <= 1) return 0;
+        
+        int n  = nums.size();
+        int prod = 1;
+        int cnt = 0;
+
+        int l = 0;
+        for(int r=0; r<n; r++){
+            prod = prod * nums[r];
+            while(prod >= k){
+                prod /= nums[l];
+                l++;
+            }
+            cnt += (r-l+1);
+        }
+        return cnt;
+    }
+};
+// Input: nums = [10,5,2,6], k = 100
+// Output: 8
+// Explanation: The 8 subarrays that have product less than 100 are:
+// [10], [5], [2], [6], [10,5], [5,2], [2,6], [5,2,6]

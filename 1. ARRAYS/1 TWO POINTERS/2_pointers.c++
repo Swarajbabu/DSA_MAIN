@@ -12,19 +12,7 @@ void reverse_array(vector<int> &arr){
         st++;
         ed--;
     }
-}
-int main(){
-    int n;
-    cin>>n;
-    vector<int> arr(n);
-    for(int i = 0;i<n;i++){
-        cin>>arr[i];
-    }
-    reverse_array(arr);
-    for(int i=0;i<n;i++){
-        cout<<arr[i]<<" ";
-    }
-}
+};
 // Output (for input: 1 2 3 4 5):
 //         5 4 3 2 1
 
@@ -39,24 +27,12 @@ void reverseString(vector<char>& s) {
         st++;
         ed--;
     }
-}
-int main(){
-    int n;
-    cin>>n;
-    vector<char> arr(n);
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
-    }
-    reverseString(arr);
-    for(int i=0;i<n;i++){
-        cout<<arr[i]<<" ";
-    }
-    return 0;
-}
+};
 // Output (for input: h e l l o):
 //         o l l e h
 // Output (for input: SWARAJBABU):
 //         UBABJARAWS
+
 
 // Find Maximum Consecutive Ones in an array in C++ leetcode
 #include<bits/stdc++.h>
@@ -75,17 +51,7 @@ int findMaxConsecutiveOnes(vector<int>& nums) {
         }
     }
     return max1;
-}
-int main(){
-    int n;
-    cin>>n;
-    vector<int> arr(n);
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
-    }
-    cout<<findMaxConsecutiveOnes(arr);
-    return 0;
-}
+};
 // Output (for input: 1 1 0 1 1 1):
 //         3
 
@@ -143,8 +109,7 @@ public:
 
 // Input: numbers = [2,3,4], target = 6
 // Output: [1,3]
-
-
+//
 
 
 // “at most 1 duplicate” → compare with nums[i-1]
