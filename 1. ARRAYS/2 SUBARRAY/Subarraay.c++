@@ -144,7 +144,35 @@ public:
         return max_len;
     }
 };
-//                        OR                                  //
+//                       or                                        //
+// better approach using sliding window technique    TC: o(2n) and SC: o(1)
+// 1004. Max Consecutive Ones III
+class Solution {
+public:
+    int longestOnes(vector<int>& nums, int k) {
+        int left = 0;
+        int zeros = 0;
+        int max_len = 0;
+
+        for(int right = 0; right < nums.size(); right++) {
+            if(nums[right] == 0)
+                zeros++;
+
+            while(zeros > k) {
+                if(nums[left] == 0)
+                    zeros--;
+                left++;
+            }
+
+            max_len = max(max_len, right - left + 1);
+        }
+        return max_len;
+    }
+};
+// Input: nums = [1,1,1,0,0,0,1,1,1,1], k = 2
+// Output: 6
+//
+//                        OR                                   //
 // 1004. Max Consecutive Ones III optimal approach using sliding window technique    tc: o(n) and sc: o(1)
 class Solution {
 public:
