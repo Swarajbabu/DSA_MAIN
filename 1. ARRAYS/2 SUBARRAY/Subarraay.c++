@@ -258,3 +258,29 @@ public:
 // Output: 8
 // Explanation: The 8 subarrays that have product less than 100 are:
 // [10], [5], [2], [6], [10,5], [5,2], [2,6], [5,2,6]
+
+
+// 209. Minimum Size Subarray Sum            optimal approach using sliding window technique      TC: o(n) and SC: o(1)
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int n = nums.size();
+        int l = 0;
+        int sum = 0;
+        int min_len = INT_MAX;
+        for(int r = 0;r<n;r++){
+            sum = sum + nums[r];
+            while(sum>=target){
+                min_len = min(r-l+1 , min_len);
+                sum = sum - nums[l];
+                l++;
+            }
+        }
+        return (min_len == INT_MAX) ? 0 : min_len;
+    }
+};
+// Input: target = 7, nums = [2,3,1,2,4,3]
+// Output: 2
+// Explanation: The subarray [4,3] has the minimal length under the problem constraint.
+// we are having the sum of subarray graterthan or equal to target:         We need to pick the MIN LenGTH subarray
+//[2,3,1,2], [2,3,1,2,4], [2,3,1,2,4,3], [3,1,2,4], [3,1,2,4,3], [1,2,4], [1,2,4,3], [2,4,3] ,[4,3]
