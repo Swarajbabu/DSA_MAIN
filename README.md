@@ -54,14 +54,14 @@ DSA_MAIN/
 | 1 | **Arrays** | ✅ In Progress |
 | 2 | **Stacks** | ✅ In Progress |
 | 3 | **Recursion** | ✅ In Progress |
-| 4 | **Linked Lists** | 🔜 Coming Soon |
+| 4 | **Linked Lists** | ✅ In Progress |
 | 5 | **Trees & BST** | 🔜 Coming Soon |
 | 6 | **Graphs** | 🔜 Coming Soon |
 | 7 | **Dynamic Programming** | 🔜 Coming Soon |
-| 8 | **Sorting & Searching** | 🔜 Coming Soon |
-| 9 | **Queues & Deques** | 🔜 Coming Soon |
-| 10 | **Heaps & Priority Queues** | 🔜 Coming Soon |
-| 11 | **Hashing** | 🔜 Coming Soon |
+| 8 | **Sorting & Searching** | ✅ In Progress |
+| 9 | **Queues & Deques** | ✅ In Progress |
+| 10 | **Heaps & Priority Queues** | ✅ In Progress |
+| 11 | **Hashing** | ✅ In Progress |
 | 12 | **Greedy Algorithms** | 🔜 Coming Soon |
 | 13 | **Backtracking** | 🔜 Coming Soon |
 | 14 | **Tries** | 🔜 Coming Soon |
