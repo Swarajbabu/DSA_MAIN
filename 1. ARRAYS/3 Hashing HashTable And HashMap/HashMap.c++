@@ -4,6 +4,7 @@
 
 // Basic operations on a map include inserting key-value pairs, accessing values using keys,
 #include <iostream>
+#include <bits/stdc++.h>
 #include <map>
 
 using namespace std;
@@ -248,3 +249,53 @@ int main(){
 //      3->Mohan
 //      5->Laxmi
 //      Number Of keys Present: 2
+
+// 242. Valid Anagram           tc: o(n) and sc: o(n)
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if (s.size() != t.size()) return false;
+
+        unordered_map<char, int> mp;
+
+        for (int i = 0; i < s.size(); i++) {
+            mp[s[i]]++;
+            mp[t[i]]--;   
+        }
+
+        for (auto it : mp) {
+            if (it.second != 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+};
+// Input: s = "anagram", t = "nagaram"
+// Output: true
+// Explanation: "anagram" and "nagaram" are anagrams of each other, so the function returns true.
+
+
+// 169. Majority Element        tc: o(n) and sc: o(n)
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int n = nums.size();
+        unordered_map<int ,int> mp;
+        for(int i=0;i<n;i++){
+            mp[nums[i]]++;
+        }
+        int max = INT_MAX;
+        for(auto it:mp){
+            if(it.second>(n/2)){
+                return it.first;
+            }
+        }
+        return 0;
+    }
+};
+// Input: nums = [2,2,1,1,1,2,2]
+// Output: 2
+
+
