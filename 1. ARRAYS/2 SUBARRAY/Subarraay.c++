@@ -284,3 +284,28 @@ public:
 // Explanation: The subarray [4,3] has the minimal length under the problem constraint.
 // we are having the sum of subarray graterthan or equal to target:         We need to pick the MIN LenGTH subarray
 //[2,3,1,2], [2,3,1,2,4], [2,3,1,2,4,3], [3,1,2,4], [3,1,2,4,3], [1,2,4], [1,2,4,3], [2,4,3] ,[4,3]
+
+
+// 904. Fruit Into Baskets            optimal approach using sliding window technique      TC: o(n) and SC: o(1)
+class Solution {
+public:
+    int totalFruit(vector<int>& fruits) {
+        unordered_map<int, int> mp;
+        int n = fruits.size();
+        int l = 0;
+        int max_val = 0;
+        for (int i = 0; i < n; i++) {
+            mp[fruits[i]]++;
+
+            while (mp.size() > 2) {
+                mp[fruits[l]]--;
+                if (mp[fruits[l]] == 0) {
+                    mp.erase(fruits[l]);
+                }
+                l++;
+            }
+            max_val = max(max_val,i-l+1);
+        }
+        return max_val;
+    }
+};
