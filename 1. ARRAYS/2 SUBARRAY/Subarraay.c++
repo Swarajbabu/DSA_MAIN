@@ -309,3 +309,125 @@ public:
         return max_val;
     }
 };
+// Input: fruits = [1,2,1,2,3,3,3,4,4,4]
+// Output: 4
+// Explanation: We can put at most 2 types of fruits in each basket. 
+//The optimal way is to pick from index 0 to index 3 (inclusive), that is, [1,2,1,2].
+
+
+
+// 992. Subarrays with K Different Integers            optimal approach using sliding window technique      TC: o(n) and SC: o(1)
+class Solution {
+public:
+    int atmost(vector<int>& nums, int k){
+        int n =  nums.size();
+        int l = 0;
+        int cnt = 0;
+        unordered_map<int,int> mp;
+        for(int i=0;i<n;i++){
+            mp[nums[i]]++;
+            while(mp.size()>k){
+                mp[nums[l]]--;
+                if(mp[nums[l]]==0){
+                    mp.erase(nums[l]);
+                }
+                l++;
+            }
+            if(mp.size()<=k){
+                cnt = cnt + (i-l+1);
+            }
+        }
+        return cnt;
+    }
+    int subarraysWithKDistinct(vector<int>& nums, int k) {
+       return (atmost(nums,k) - atmost(nums,k-1)); 
+    }
+};
+// Input: nums = [1,2,1,2,3], k = 2
+// Output: 7
+// Explanation: Subarrays formed with exactly 2 different integers: [1,2], [2,1], [1,2], [2,3], [1,2,1], [2,1,2], [1,2,3].
+
+
+
+// 1876. Substrings of Size Three with Distinct Characters            optimal approach using sliding window technique      TC: o(n) and SC: o(1)
+class Solution {
+public:
+    int countGoodSubstrings(string s) {
+        int n = s.size();
+        int l = 0;
+        int cnt=0;
+        unordered_map<char, int> mp;
+        for (int r = 0; r < n; r++) {
+            mp[s[r]]++;
+            while(r - l + 1 >3){
+                mp[s[l]]--;
+                if(mp[s[l]]==0){
+                    mp.erase(s[l]);
+                }
+                l++;
+            }
+            if(r-l+1 ==3 && mp.size()==3){
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+};
+// Input: s = "xyzzaz"
+// Output: 1
+// Explanation: The good substrings of size 3 are "xyz" and "yzz", because the characters 'x', 'y', and 'z' are all distinct.
+
+
+// ================================================ or ================================================
+
+
+// 1876. Substrings of Size Three with Distinct Characters           optimal tc: o(n) and sc: o(1)
+class Solution {
+public:
+    int countGoodSubstrings(string s) {
+        int n = s.size();
+        int cnt = 0;
+        if(n<3){
+            return 0;
+        }
+        for(int i=0;i<n-2;i++){
+            if(s[i]!=s[i+1] && s[i]!=s[i+2] && s[i+1]!=s[i+2]){
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+};
+// Input: s = "xyzzaz"
+// Output: 1
+// Explanation: The good substrings of size 3 are "xyz" and "yzz", because the characters 'x', 'y', and 'z' are all distinct.
+
+
+// 3. Longest Substring Without Repeating Characters            optimal approach using sliding window technique      TC: o(n) and SC: o(1)
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int n = s.size();
+        int l = 0;
+        int maxl = INT_MIN;
+        unordered_map<char,int> mp;
+        for(int r=0;r<n;r++){
+            mp[s[r]]++;
+            while(mp[s[r]]>1){
+                mp[s[l]]--;
+                if(mp[s[l]]==0){
+                    mp.erase(s[l]);
+                }
+                l++;
+            }
+            maxl = max(maxl,(r-l+1));
+        }
+        return maxl;
+    }
+};
+// Input: s = "abcabcbb"
+// Output: 3
+// Explanation: The answer is "abc", with the length of 3.
+//subarrays are: "abc", "bca", "cab", "abc", "cb", "bb" and the longest substring without repeating characters is "abc" with length 3.
+
+
