@@ -431,3 +431,73 @@ public:
 //subarrays are: "abc", "bca", "cab", "abc", "cb", "bb" and the longest substring without repeating characters is "abc" with length 3.
 
 
+// 1456. Maximum Number of Vowels in a Substring of Given Length            optimal approach using sliding window technique      TC: o(n) and SC: o(1)
+class Solution {
+public:
+    bool isVowel(char s) {
+        char ch = tolower(s);
+        return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
+    }
+    int maxVowels(string s, int k) {
+        int n = s.size();
+        int l = 0;
+        int cnt = 0;
+        int max_vo = 0;
+        unordered_map<int,int> mp;
+        for (int r = 0; r < n; r++) {
+            mp[s[r]]++;
+            if(isVowel(s[r])){
+                cnt++;
+            }
+            while(r-l+1>k){
+                mp[s[l]]--;
+                if(isVowel(s[l])){
+                    cnt--;
+                }
+                if(mp[s[l]]==0){
+                    mp.erase(s[l]);
+                }
+                l++;
+            }
+            max_vo = max(max_vo,cnt);
+        }
+        return max_vo;
+    }
+};
+// Input: s = "abciiidef", k = 3
+// Output: 3
+// Explanation: The substring "iii" contains 3 vowel letters (which is the maximum possible number of vowels in a substring of length 3).
+
+//                                                          or                                                  //
+// 1456. Maximum Number of Vowels in a Substring of Given Length            optimal approach using sliding window technique      TC: o(n) and SC: o(1)
+class Solution {
+public:
+    bool isVowel(char s) {
+        char ch = tolower(s);
+        return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
+    }
+    int maxVowels(string s, int k) {
+        int n = s.size();
+        int cnt = 0;
+        int ans = 0;
+        for (int i = 0; i < k; i++) {
+            if (isVowel(s[i])) {
+                cnt++;
+            }
+        }
+        ans = cnt;
+        for (int i = k; i < n; i++) {
+            if (isVowel(s[i])) {
+                cnt++;
+            }
+            if (isVowel(s[i - k])) {
+                cnt--;
+            }
+            ans = max(ans, cnt);
+        }
+        return ans;
+    }
+};
+// Input: s = "abciiidef", k = 3
+// Output: 3
+// Explanation: The substring "iii" contains 3 vowel letters (which is the maximum possible number of vowels in a substring of length 3).
