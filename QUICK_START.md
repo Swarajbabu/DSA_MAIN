@@ -1,13 +1,13 @@
 # 🚀 Quick Start Guide
 
-Get started with DSA_MAIN in just a few minutes!
+Get started with DSA-PRACTICE in just a few minutes!
 
 ## ⚡ Quick Setup
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/Swarajbabu/DSA_MAIN.git
-cd DSA_MAIN
+git clone https://github.com/Swarajbabu/DSA-PRACTICE.git
+cd DSA-PRACTICE
 ```
 
 ### 2. Choose Your Compiler

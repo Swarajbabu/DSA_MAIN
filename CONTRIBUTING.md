@@ -1,6 +1,6 @@
-# 🤝 Contributing to DSA_MAIN
+# 🤝 Contributing to DSA-PRACTICE
 
-Thank you for your interest in contributing to the DSA_MAIN repository! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to the DSA-PRACTICE repository! This document provides guidelines and instructions for contributing.
 
 ## 📋 How to Contribute
 
@@ -8,8 +8,8 @@ Thank you for your interest in contributing to the DSA_MAIN repository! This doc
 ```bash
 # Fork the repository on GitHub
 # Clone your fork
-git clone https://github.com/YOUR-USERNAME/DSA_MAIN.git
-cd DSA_MAIN
+git clone https://github.com/YOUR-USERNAME/DSA-PRACTICE.git
+cd DSA-PRACTICE
 ```
 
 ### 2. Create a Feature Branch
@@ -120,4 +120,4 @@ Areas that could use contributions:
 
 ---
 
-**Thank you for contributing to DSA_MAIN! 🎉**
+**Thank you for contributing to DSA-PRACTICE! 🎉**

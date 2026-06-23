@@ -1,4 +1,4 @@
-# 🧠 DSA_MAIN — Data Structures & Algorithms in C++
+# 🧠 DSA-PRACTICE — Data Structures & Algorithms in C++
 
 > A structured, actively maintained repository of DSA problem solutions, topic-wise implementations, LeetCode daily challenges, pattern cheat sheets, and interview prep resources — all written in C++.
 
@@ -34,7 +34,7 @@ The goal is simple: go from understanding to mastery — one problem at a time.
 ## 📁 Repository Structure
 
 ```
-DSA_MAIN/
+DSA-PRACTICE/
 ├── 1. ARRAYS/                      # Array problems and implementations
 ├── 2. Stacks/                      # Stack problems and implementations
 ├── Recursion/                      # Recursion problems and patterns
@@ -88,8 +88,8 @@ Solutions to LeetCode daily challenge problems, written in C++ with comments exp
 
 ### Clone the Repository
 ```bash
-git clone https://github.com/Swarajbabu/DSA_MAIN.git
-cd DSA_MAIN
+git clone https://github.com/Swarajbabu/DSA-PRACTICE.git
+cd DSA-PRACTICE
 ```
 
 ### Compile & Run a C++ File
