@@ -412,3 +412,58 @@ public:
 // Input: head = [1,2,3,4,5], left = 2, right = 4
 // Output: [1,4,3,2,5]
 // Explanation: Reverse the nodes from position 2 to 4. The first node is the odd node, the second node is the even node, and so on ... Note that the relative order inside both the even and odd groups should remain as it was in the input. The first node of the even group (node 2) should follow the last node of the odd group (node 5).
+
+
+
+// 2130 Maximum Twin Sum of a Linked List                 TC O(n) and SC O(1)
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+ListNode* reverseLL(ListNode* head) {
+    ListNode* prev = NULL;
+    ListNode* curr = head;
+
+    while (curr) {
+        ListNode* nextNode = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nextNode;
+    }
+
+    return prev;
+}
+class Solution {
+public:
+    int pairSum(ListNode* head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while (fast != NULL && fast->next != NULL) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        ListNode* reverse = reverseLL(slow);
+        
+        ListNode* firsthalf = head;
+        ListNode* secondhalf = reverse;
+        int max_pair = 0;
+        while(secondhalf != NULL && firsthalf != NULL){
+            int sum = secondhalf->val + firsthalf->val;
+            max_pair = max(max_pair,sum);
+            secondhalf = secondhalf->next;
+            firsthalf = firsthalf->next;
+        }
+        return max_pair;
+    }
+};
+// Input: head = [5,4,2,1]
+// Output: 6
+// nth node from the start is 5, and the nth node from the end is 1. The twin sum is 5 + 1 = 6. The maximum twin sum is 6.
+// Explanation: The maximum twin sum is 6. The nodes forming the twin sum are 5 and 1, which are at positions 1 and 4 respectively.
+
